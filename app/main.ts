@@ -1,8 +1,9 @@
 //主进程
-const { app, BrowserWindow, Menu } = require('electron')
+import { app, BrowserWindow, Menu, ipcMain } from 'electron';
+
 // 保留窗口对象的全局引用，如果不保留，
 // 则窗口javascript对象将被垃圾收集时自动关闭。
-let mainWindow
+let mainWindow: any
 
 // const template = [{
 //   label: '退出',
@@ -21,7 +22,8 @@ function createWindow() {
     width: 1200,
     height: 800,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
 
@@ -37,9 +39,6 @@ function createWindow() {
 
   // 窗口关闭时触发
   mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null
   })
 }
@@ -58,4 +57,9 @@ app.on('activate', function () {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow()
+})
+
+
+ipcMain.on('list', (e, msg) => {
+  console.log(msg)
 })

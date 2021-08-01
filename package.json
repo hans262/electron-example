@@ -2,27 +2,41 @@
   "name": "electron-example",
   "version": "1.0.0",
   "description": "A minimal Electron application",
-  "main": "app/main.js",
+  "main": "out/main.js",
+  "author": "hans",
   "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "estart": "set ELECTRON_DVELOP=true && electron . ",
+    "out:w": "tsc -w --project tsconfig.out.json",
+    "estart": "set ELECTRON_DVELOP=true && electron .",
     "package": "electron-packager ./ --platform=win32 --arch=x64 --out=./package --overwrite --asar --ignore=node_modules --ignore=src"
   },
   "devDependencies": {
-    "antd": "^3.16.5",
-    "electron": "^4.1.4",
-    "electron-packager": "^13.1.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.0.0"
+    "@types/mysql": "^2.15.19",
+    "electron": "^13.1.7",
+    "electron-packager": "^15.3.0",
+    "mysql": "^2.18.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^3.4.4"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "dependencies": {
+    "@types/node": "^16.4.9",
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
+    "typescript": "^4.3.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

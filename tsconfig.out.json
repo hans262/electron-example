@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "outDir": "./out",
+    "sourceMap": true,
+    "removeComments": true,
+    "strict": true
+  },
+  "include": [
+    "app"
+  ]
+}
