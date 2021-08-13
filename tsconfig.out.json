@@ -3,7 +3,7 @@
     "target": "ESNext",
     "module": "commonjs",
     "outDir": "./out",
-    "sourceMap": true,
+    "sourceMap": false,
     "removeComments": true,
     "strict": true
   },

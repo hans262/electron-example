@@ -11,12 +11,8 @@ function createWindow() {
             contextIsolation: false
         }
     });
-    if (process.env.ELECTRON_DVELOP) {
-        mainWindow.loadURL('http://127.0.0.1:3000/');
-    }
-    else {
-        mainWindow.loadFile('build/index.html');
-    }
+    mainWindow.loadURL('http://127.0.0.1:3000/');
+    mainWindow.webContents.openDevTools();
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
@@ -30,7 +26,6 @@ electron_1.app.on('activate', function () {
     if (mainWindow === null)
         createWindow();
 });
-electron_1.ipcMain.on('list', (e, msg) => {
+electron_1.ipcMain.on('message', (e, msg) => {
     console.log(msg);
 });
-//# sourceMappingURL=main.js.map

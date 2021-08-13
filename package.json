@@ -1,7 +1,7 @@
 {
   "name": "electron-example",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "electron example",
   "main": "out/main.js",
   "author": "hans",
   "homepage": ".",

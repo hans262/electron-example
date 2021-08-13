@@ -5,7 +5,7 @@ export default () => {
   function open() {
     const { fs } = window as any
     try {
-      const result = fs.readdirSync('C://')
+      const result = fs.readdirSync('/')
       setFiles(result)
     } catch (error) {
       console.log(error.message)
@@ -14,22 +14,17 @@ export default () => {
   async function click() {
     const { electron } = window as any
     console.log(electron)
-
-    electron.ipcRenderer.send('list', 'huahua')
+    electron.ipcRenderer.send('message', 'huahua')
   }
   return (
     <div>
-      <button onClick={open}>C盘</button>
-      <div>{files.map((file, index) => <span key={index}>{file}</span>)}</div>
-      <button onClick={click}>btn</button>
+      <button onClick={open}>磁盘</button>
+      <div>
+        {files.map((file, index) =>
+          <span style={{ marginRight: 10 }} key={index}>{file}</span>
+        )}
+      </div>
+      <button onClick={click}>send main</button>
     </div>
   )
 }
-
-
-
-// ;(async ()=>{
-//   let list = await Query<any>(`SELECT * FROM user ORDER BY create_at DESC`)
-//   console.log(list)
-  
-// })()

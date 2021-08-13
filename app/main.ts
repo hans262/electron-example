@@ -28,14 +28,14 @@ function createWindow() {
   })
 
   //加载url
-  if (process.env.ELECTRON_DVELOP) {
-    mainWindow.loadURL('http://127.0.0.1:3000/')
-  } else {
-    mainWindow.loadFile('build/index.html')
-  }
+  // if (process.env.ELECTRON_DVELOP) {
+  mainWindow.loadURL('http://127.0.0.1:3000/')
+  // } else {
+  //   mainWindow.loadFile('build/index.html')
+  // }
 
   // 是否开启调试
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // 窗口关闭时触发
   mainWindow.on('closed', function () {
@@ -60,6 +60,6 @@ app.on('activate', function () {
 })
 
 
-ipcMain.on('list', (e, msg) => {
+ipcMain.on('message', (e, msg) => {
   console.log(msg)
 })
