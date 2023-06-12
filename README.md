@@ -1,21 +1,19 @@
-## Electron Example
+# Electron Example
 
-### 安装
+## 说明
 ```
-  git clone https://github.com/ounana/electron-example.git
-  cd electron-example
-  npm install
-```
-### 启动开发
-```
+  # 启动vite项目
   npm start
-  npm run estart
+
+  # 启动electron开发
+  npm run dev
+
+  nodemon 监控代码修改，重启进程
+
+
+  
 ```
-### 打包构建
-```
-  npm run build
-  npm run package
-```
+
 ### help
 ```
   electron-packager <sourcedir> <appname> --platform=<platform> --arch=<arch> --out=<outdir> 

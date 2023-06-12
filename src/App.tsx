@@ -1,30 +1,42 @@
-import React, { useState } from 'react'
+import { useEffect } from 'react'
+import viteLogo from './assets/vite.svg'
 
-export default () => {
-  const [files, setFiles] = useState([])
-  function open() {
-    const { fs } = window as any
-    try {
-      const result = fs.readdirSync('/')
-      setFiles(result)
-    } catch (error) {
-      console.log(error.message)
-    }
+function App() {
+  console.log(window.electronAPI)
+
+  useEffect(() => {
+    // const { fs } = window.electronApi
+    // const result = fs.readdirSync('/')
+    // console.log(result)
+    // setFiles(result)
+  }, [])
+
+
+  function send() {
+    window.electronAPI.upload().then(res => {
+      console.log(res)
+    })
   }
-  async function click() {
-    const { electron } = window as any
-    console.log(electron)
-    electron.ipcRenderer.send('message', 'huahua')
-  }
+
   return (
-    <div>
-      <button onClick={open}>磁盘</button>
-      <div>
-        {files.map((file, index) =>
-          <span style={{ marginRight: 10 }} key={index}>{file}</span>
-        )}
-      </div>
-      <button onClick={click}>send main</button>
+    <div className='app'>
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <button onClick={() => {
+        window.electronAPI.dispatch({
+          type: 'set-title',
+          payload: 'Hans'
+        })
+
+      }}>设置标题</button>
+      <button onClick={() => {
+        window.electronAPI.dispatch({
+          type: 'send-notification',
+          payload: { title: '测试标题', body: '测试内容' }
+        })
+      }}>发送通知</button>
+      <button onClick={send}>双向通信</button>
     </div>
   )
 }
+
+export default App
