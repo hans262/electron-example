@@ -5,9 +5,18 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 设置外链js 需要添加地址 -->
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
-  <title>Electron</title>
+  <!-- 
+    electron安全问题
+    CSP 跨站脚本攻击
+    如果你的app引用了外部的js库，那么外部的库是可以访问用户电脑。
+    用户的文件系统、shell等，这些都将可以暴露出去。
+    任何来自不受信任源的内容（外部脚本）都将带来安全风险。
+    隔离不受信任的脚本内容，设置外部脚本需要添加地址
+
+    如果你开启的nodejs集成，那么外部的库就可以访问fs系统了
+    这就需要更加小心，你的代码
+   -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://apis.example.com" />
 </head>
 
 <body>

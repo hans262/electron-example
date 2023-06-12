@@ -10,7 +10,11 @@
 
   nodemon 监控代码修改，重启进程
 
+  切割mac电脑图片
+  sips -z 32 32 abc.png --out abc@2x.png
+  
 
+  切换到electron-builder
   
 ```
 

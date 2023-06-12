@@ -1,9 +1,24 @@
-const { app, BrowserWindow, ipcMain, Notification } = require('electron')
+const { app, BrowserWindow, ipcMain, Notification, Tray } = require('electron')
 const path = require('node:path')
+
+const createTray = () => {
+  const tray = new Tray(
+    path.resolve(
+      __dirname,
+      process.platform == 'darwin'
+        ? './assets/abc@2x.png'
+        : '../../resources/windowTray.png'
+    )
+  )
+  // const contextMenu = Menu.buildFromTemplate([{ label: '退出', role: 'quit' }])
+  // tray.setToolTip('向军大叔摄像头')
+  // tray.setContextMenu(contextMenu)
+}
 
 const createWindow = () => {
   // 创建浏览器窗口
   const mainWindow = new BrowserWindow({
+    title: 'none',
     width: 300,
     height: 300,
     alwaysOnTop: true,
@@ -32,6 +47,7 @@ const createWindow = () => {
 
 //初始化窗口
 app.whenReady().then(() => {
+  createTray()
   createWindow()
 })
 

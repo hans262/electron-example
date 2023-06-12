@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import viteLogo from './assets/vite.svg'
 
 function App() {
-  console.log(window.electronAPI)
+  // console.log(window.electronAPI)
 
   useEffect(() => {
     // const { fs } = window.electronApi
