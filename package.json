@@ -1,6 +1,17 @@
 {
   "name": "electron-example",
   "version": "1.0.0",
+  "description": "This is a application of test",
+  "author": {
+    "name": "Hans",
+    "email": "771565119@qq.com"
+  },
+  "build": {
+    "appId": "your.appId",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    }
+  },
   "main": "src/electron.js",
   "scripts": {
     "start": "vite",
@@ -9,20 +20,21 @@
     "tsc": "tsc -p tsconfig.electron.json -w",
     "dev": "export ELECTRON_DVE=true && nodemon --exec electron .",
     "dev-win": "set ELECTRON_DVE=true && nodemon --exec electron .",
-    "package": "electron-packager ./ --platform=win32 --arch=x64 --out=./package --overwrite --asar --ignore=node_modules --ignore=src"
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "devDependencies": {
-    "electron": "25.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "dependencies": {
     "@types/node": "^20.3.0",
     "@types/react": "^18.2.11",
     "@types/react-dom": "^18.2.4",
     "@vitejs/plugin-react": "^4.0.0",
+    "electron": "25.1.0",
+    "electron-builder": "^23.6.0",
     "typescript": "^5.0.2",
-    "vite": "^4.3.9",
-    "electron-packager": "^17.1.1"
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
